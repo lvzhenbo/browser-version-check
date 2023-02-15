@@ -29,6 +29,7 @@ const result = reactive({
   mobile: false,
   model: "",
 });
+const temp = ref<UA>();
 
 // @ts-ignore
 if (navigator.userAgentData) {
@@ -53,6 +54,7 @@ if (navigator.userAgentData) {
       result.bitness = ua.bitness;
       result.mobile = ua.mobile;
       result.model = ua.model;
+      temp.value = ua;
     });
 } else {
   isSupport.value = false;
@@ -129,6 +131,9 @@ if (navigator.userAgentData) {
           </n-card>
         </n-gi>
       </n-grid>
+      <div>
+        {{ temp }}
+      </div>
     </n-layout-content>
     <!-- <n-layout-footer position="absolute" class="inset-x-0 bottom-0">
       成府路
