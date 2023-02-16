@@ -16,6 +16,9 @@ interface UA {
   platformVersion: string;
 }
 
+const browserList = ["Google Chrome", "Microsoft Edge", "OperaMobie"];
+const kernelList = ["Chromium", "Opera"];
+
 const isSupport = ref(true);
 const result = reactive({
   browser: "",
@@ -44,12 +47,14 @@ if (navigator.userAgentData) {
       "fullVersionList", // 浏览器名称和完整版本
     ])
     .then((ua: UA) => {
+      console.log(ua);
+
       ua.fullVersionList.forEach((item) => {
-        if (item.brand === "Google Chrome" || item.brand === "Microsoft Edge") {
+        if (browserList.includes(item.brand)) {
           result.browser = item.brand;
           result.browserVersion = item.version;
         }
-        if (item.brand === "Chromium") {
+        if (kernelList.includes(item.brand)) {
           result.kernel = item.brand;
           result.kernelVersion = item.version;
         }
@@ -141,9 +146,9 @@ if (navigator.userAgentData) {
           </n-card>
         </n-gi>
       </n-grid>
-      <div>
+      <!-- <div>
         {{ temp }}
-      </div>
+      </div> -->
     </n-layout-content>
     <!-- <n-layout-footer position="absolute" class="inset-x-0 bottom-0">
       成府路
