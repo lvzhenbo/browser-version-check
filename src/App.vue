@@ -44,10 +44,20 @@ if (navigator.userAgentData) {
       "fullVersionList", // 浏览器名称和完整版本
     ])
     .then((ua: UA) => {
-      result.browser = ua.fullVersionList[2].brand;
-      result.browserVersion = ua.fullVersionList[2].version;
-      result.kernel = ua.fullVersionList[0].brand;
-      result.kernelVersion = ua.fullVersionList[0].version;
+      ua.fullVersionList.forEach((item) => {
+        if (item.brand === "Google Chrome" || item.brand === "Microsoft Edge") {
+          result.browser = item.brand;
+          result.browserVersion = item.version;
+        }
+        if (item.brand === "Chromium") {
+          result.kernel = item.brand;
+          result.kernelVersion = item.version;
+        }
+      });
+      // result.browser = ua.fullVersionList[2].brand;
+      // result.browserVersion = ua.fullVersionList[2].version;
+      // result.kernel = ua.fullVersionList[0].brand;
+      // result.kernelVersion = ua.fullVersionList[0].version;
       result.platform = ua.platform;
       result.platformVersion = ua.platformVersion;
       result.architecture = ua.architecture;
