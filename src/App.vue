@@ -141,9 +141,9 @@ if (navigator.userAgentData) {
           </n-card>
         </n-gi>
       </n-grid>
-      <!-- <div>
+      <div>
         {{ temp }}
-      </div> -->
+      </div>
     </n-layout-content>
     <!-- <n-layout-footer position="absolute" class="inset-x-0 bottom-0">
       成府路
