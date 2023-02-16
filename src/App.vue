@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Github } from "@vicons/fa";
 interface UA {
   architecture: string;
   bitness: string;
@@ -81,8 +82,21 @@ if (navigator.userAgentData) {
     <n-layout-header class="border-b">
       <n-grid class="my-4" item-responsive responsive="screen">
         <n-gi span="24 m:18 l:16" offset="0 m:2 l:4" class="mx-4">
-          <div class="text-xl font-bold flex justify-between">
-            <div>浏览器版本检测</div>
+          <div class="flex justify-between">
+            <div class="text-xl font-bold">浏览器版本检测</div>
+            <div class="flex items-center">
+              <n-button
+                text
+                class="text-xl"
+                tag="a"
+                href="https://github.com/lvzhenbo/browser-version-check"
+                target="_blank"
+              >
+                <n-icon>
+                  <Github />
+                </n-icon>
+              </n-button>
+            </div>
           </div>
         </n-gi>
       </n-grid>
